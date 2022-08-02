@@ -1,0 +1,35 @@
+JMJPFU
+Lord bless this attempt of yours
+29-June-2022
+
+Processes for Truck load detection
+
+#################### Create a virtual environment ##############
+conda create -n tlDetect python=3.9
+
+pip install Flask
+pip install flasgger
+pip install Pillow
+pip install pandas
+pip install json_minify
+pip install tensorflow
+pip install yolo5
+
+
+######################### Creating the docker image #################
+
+
+
+
+
+####################### Running docker ############################################
+
+
+
+###################### Integrating the video tracking application ####################
+
+Created the truck detector using Yolo5
+Next start the tracking of identified object in successive frames
+
+When capturing the tracking id and bounding boxes in the objectTracker() class, we will also store the array of the frame which is matching.
+This way we will be able to associate the object with the image and the bounding box

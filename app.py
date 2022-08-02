@@ -33,7 +33,7 @@ def infer():
       - name: truckImage
         in: formData
         type: file
-        required: true
+        required: false
     responses:
         200:
             description: The predicted class and probability
@@ -41,10 +41,18 @@ def infer():
     """
     # Get the image object
     rawImg = request.files.get("truckImage")
-    # Pass the image object to the inference function
-    trgName, prob = dm.inferLocal(image=rawImg)
-    # Return the file name and its probability
-    return trgName + str(prob)
+    # If the request is None Start the camera capture
+    if rawImg is None:
+        # Set a flag for video capture
+        videoCapture = True
+        return "We will start the video capture"
+    else:
+        # Pass the image object to the inference function
+        #trgName, prob = dm.inferLocal(image=rawImg)
+        # Pass the video image
+        retVal = dm.inferVideo(rawImg,False)
+        # Return the file name and its probability
+        return retVal
 
 if __name__ == '__main__':
     app.run()

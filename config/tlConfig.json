@@ -13,103 +13,36 @@
 * image dimensions
 ****/
 "imgResize" : 224,
+  "videoSize" : 800,
 
 
 /****
 * All paths
 ****/
 
-"MODEL_PATH" : "/home/jmjtl/D:/JMJTL/JMJTL_projects/TL_project/output/pothole_detector_RCNN.h5",
-"ENCODER_PATH" :"/home/jmjtl/D:/JMJTL/JMJTL_projects/TL_project/output/label_encoder_RCNN.pickle",
-
-
-/****
-* variable mapping
-****/
-
-"demandDate" : "AEAttendancesDateTime",
-"attendDate" : "AEAttendancesDateTime",
-"admissionsDate" : "AdmissionDateTime",
-"consolVar1": "Unique_ID",
-"weatherVars" : ["dt","city_name","temp","dew_point", "feels_like", "temp_min", "temp_max", "pressure","humidity", "wind_speed", "wind_deg", "wind_gust", "rain_1h", "rain_3h", "snow_1h","clouds_all"],
-"weather_dateVar" : "dt",
-"weather_selected" : ["date","temp","dew_point", "feels_like", "temp_min", "temp_max", "pressure","humidity", "wind_speed", "wind_deg", "wind_gust", "rain_1h", "rain_3h", "snow_1h","clouds_all"],
-"weather_consol" : "mean",
-"crime_city" : "OCU Name",
-"crime_vars" : ["Month-Year", "Sum Value"],
-"crime_consol" : "sum",
-"hol-countries":["UK","India","US"],
+"MODEL_PATH" : "output/truck_detector.h5",
+"ENCODER_PATH" :"output/label_encoder.pickle",
+  "yoloPath": "output/yolov5s.pt",
+  "cocoNames" : "output/coco.names",
+  "outputVideo" : "outFiles/",
 
 /****
-* Filtering  Values
+* Video parameters
 ****/
 
-"filt" : true,
-"traintestSplit" :"2022-02-01",
-
-"filtDate": "2010",
-"yearRanges" : ["2010-01-01","2022-02-22"],
-"trainyrRanges" : ["2010-01-01","2022-02-22"],
-    
-/****
-* Azure SQL DB Credentials
-****/
-"server": "dspm-d-sqlsrv.database.windows.net",
-"database": "dspm-sqldb",
-"username": "dspm-admin",
-"password": "20slampredicts@21",
-"driver": "{ODBC Driver 17 for SQL Server}",
+  "video" : true,
+  "objects" : ["truck"],
+  "MAX_UNMATCHED_AGE" : 15,
+  "MIN_HIT_STREAK" : 2,
 
 /****
-* Train variables
+* Model parameters
 ****/
 
-"train" : false,
-"univariate" : false,
-"multivariate" : true,
-"trainMethod" : "fbProphet",
-"trainFileselect" :true,
-"trainFiles" : "./output/univariate_data/*.csv",
-"trainVarselection" : false,
-"regressors": ["school_term_dates", "temp", "feels_like", "rain_1h", "snow_1h", "pressure", 
-                     "humidity", "wind_speed", "clouds_all", "Sum Value", "Holidays"],
-"changepoint" : [1,2],
-"dailySeasonality" : [3,4],
-"weeklySeasonality" : [5,6],
-"yearlySeasonality" : [7,8],
-    
-/****
-* Inference variables
-****/
-"Inference" : true,
-"InferenceDate" :false,
-"InferencePeriods" : 7,
-"dailyPred": true,
-"monthlyPred": true,
-    
-/****
-* Directory-Compute
-****/
-"compute": "DSPM-D-COMPUTE2",
-"directory": "/mnt/batch/tasks/shared/LS_root/mounts/clusters/dspm-d-compute2/code/Users/Rtanikanti/dspm_mlws/SLAM-scripts-new",
-    
-/****
-* List of all available variables ["date", "Unique_ID","Sum Value", "temp", "visibility", "dew_point", "feels_like","temp_min", "temp_max", "pressure", "humidity", "wind_speed","wind_deg", "clouds_all","UK_public_holidays" ,"school_term_dates"]
-****/
-  
 
-"selectedVars" : ["date", "Unique_ID","Sum Value", "temp", "visibility", "dew_point", "feels_like","temp_min", "temp_max", "pressure", "humidity", "wind_speed","wind_deg", "clouds_all","UK_public_holidays","school_term_dates"],
-"n_input" : 128,
-"n_out" : 7,
-"verb" : 1,
-"epoch" : 20,
-"bs" : 16,
-"saved_trainData" : "./output/multivariate_train_data/*train.pkl",
-"saved_testData" : "./output/multivariate_train_data/*test.pkl",
-"saved_multivariate_inf":"./output/multivariate/inf_results/",
-"saved_univariate_inf":"./output/univariate/inf_results/",
-"saved_multivariate_eval":"./output/multivariate/eval_results/",
-"saved_univariate_eval":"./output/univariate/eval_results/",
-"saved_consol_forecast":"./output/predictions/consolidated_forecast/"
+  "yoloConf" : 0.5,
+  "yoloIou" : 0.4
+
+
 }
 
