@@ -31,7 +31,7 @@
 ****/
 
   "video" : true,
-  "objects" : ["truck"],
+  "objects" : ["truck","car"],
   "MAX_UNMATCHED_AGE" : 15,
   "MIN_HIT_STREAK" : 2,
 
